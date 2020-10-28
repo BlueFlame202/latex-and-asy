@@ -1,0 +1,137 @@
+% Made by: Aathreya Kadambi
+% This is actually my first package :D
+% Important note: Many of these commands that I made were based off or taken from code snippets that I found on stack exchange.
+% 
+%	VERSION 1.4
+%
+% I basically took this structure off of https://tex.stackexchange.com/questions/8750/make-your-own-sty-files.
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{NotesTemplate}
+  [2020/08/15 v1.0 LaTeX package for Note taking in any Subject.]
+
+% PACKAGES
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{ulem}
+\RequirePackage{url}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+\RequirePackage{wrapfig}
+\RequirePackage{indentfirst}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{ragged2e}
+\RequirePackage{mathtools}
+\RequirePackage{enumitem}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[inline]{asymptote}
+\RequirePackage[a4paper, margin=1in]{geometry}
+
+% USER DEFINED VARIABLES
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Primes}{\mathbb{P}}
+\newcommand{\C}{\mathbb{C}}
+
+\definecolor{dr}{RGB}{175, 0, 0}
+\newcommand{\imp}[1]{\textcolor{dr}{#1}}
+
+\newcommand{\myeq}[1]{\stackrel{\mathclap{\normalfont\mbox{\tiny{$#1$}}}}{=}} % For projective geometry
+
+% TIKZ Shortcuts
+\newcommand{\Tgrid}[4]{\draw[step=1cm, gray, very thin, ->] (#1, #2) grid (#3, #4); \draw (#1, 0) -- (#3, 0); \draw (0, #2) -- (0, #4);}
+\newcommand{\Tplane}[4]{\draw[<->] (#1, 0) -- (#3, 0); \draw[<->] (0, #2) -- (0, #4);}
+
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+% COLORFUL BOXES
+\newsavebox{\labox}
+\newenvironment{Strat}
+{
+	\newcommand{\colboxcolor}{E0F6FF}
+	\newcommand{\bordercolor}{00FFFF}
+	\begin{lrbox}{\labox}
+		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+		}  
+		{
+		\end{minipage}
+	\end{lrbox}
+	\begin{center}
+		{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{1.8pt}
+			\fcolorbox[HTML]{\bordercolor}{\colboxcolor}{\usebox{\labox}}}
+	\end{center}
+}
+
+\newenvironment{Skill}
+{
+	\newcommand{\colboxcolor}{FFE0E0}
+	\newcommand{\bordercolor}{FF0000}
+	\begin{lrbox}{\labox}
+		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+		}
+		{
+		\end{minipage}
+	\end{lrbox}
+	\begin{center}
+		{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{1.8pt}
+			\fcolorbox[HTML]{\bordercolor}{\colboxcolor}{\usebox{\labox}}}
+	\end{center}
+}
+
+\newenvironment{Interesting}
+{
+	\newcommand{\colboxcolor}{E0FFE0}
+	\newcommand{\bordercolor}{00FF00}
+	\begin{lrbox}{\labox}
+		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+		}
+		{
+		\end{minipage}
+	\end{lrbox}
+	\begin{center}
+		{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{1.8pt}
+			\fcolorbox[HTML]{\bordercolor}{\colboxcolor}{\usebox{\labox}}}
+	\end{center}
+}
+
+\newenvironment{Problem}
+{
+	\newcommand{\colboxcolor}{EEEEEE}
+	\newcommand{\bordercolor}{777777}
+	\begin{lrbox}{\labox}
+		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+		}
+		{
+		\end{minipage}
+	\end{lrbox}
+	\begin{center}
+		{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{1.8pt}
+			\fcolorbox[HTML]{\bordercolor}{\colboxcolor}{\usebox{\labox}}}
+	\end{center}
+}
+
+% The following snippet makes it possible to make colorful bullet points
+\newlist{coloritemize}{itemize}{1}
+\setlist[coloritemize]{label=\textcolor{itemizecolor}{\textbullet}}
+\colorlet{itemizecolor}{.} % This is the command for changing color
+
+% The following snippets make it possible to use a cooler font that I particularly like
+\newenvironment{KoolFont}{\fontfamily{lmss}\selectfont}{}
+
+\newcommand{\KF}[1]{{\fontfamily{lmss}\selectfont #1}}
+
+% The following snippet makes the augmented matrices work correctly with [ccc|c] thing
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\endinput
+%%
+%% End of file `NotesTemplate.sty'.
