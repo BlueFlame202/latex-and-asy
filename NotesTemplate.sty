@@ -1,8 +1,8 @@
 % Made by: Aathreya Kadambi
 % This is actually my first package :D
 % Important note: Many of these commands that I made were based off or taken from code snippets that I found on stack exchange.
-% 
-%	VERSION 1.4
+%
+%	VERSION 1.5
 %
 % I basically took this structure off of https://tex.stackexchange.com/questions/8750/make-your-own-sty-files.
 
@@ -56,7 +56,7 @@
 	\newcommand{\bordercolor}{00FFFF}
 	\begin{lrbox}{\labox}
 		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
-		}  
+		}
 		{
 		\end{minipage}
 	\end{lrbox}
@@ -102,6 +102,22 @@
 {
 	\newcommand{\colboxcolor}{EEEEEE}
 	\newcommand{\bordercolor}{777777}
+	\begin{lrbox}{\labox}
+		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
+		}
+		{
+		\end{minipage}
+	\end{lrbox}
+	\begin{center}
+		{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{1.8pt}
+			\fcolorbox[HTML]{\bordercolor}{\colboxcolor}{\usebox{\labox}}}
+	\end{center}
+}
+
+\newenvironment{ColorBox}[2]
+{
+	\newcommand{\colboxcolor}{#1}
+	\newcommand{\bordercolor}{#2}
 	\begin{lrbox}{\labox}
 		\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
 		}
