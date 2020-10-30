@@ -24,8 +24,11 @@
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage[T1]{fontenc}
-\usepackage[inline]{asymptote}
 \usepackage[a4paper, margin=1in]{geometry}
+
+% PACKAGES WITH TIKZ
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc,through,intersections,positioning}
 
 % USER DEFINED VARIABLES
 \newcommand{\R}{\mathbb{R}}
@@ -44,6 +47,16 @@
 \newcommand{\Tplane}[4]{\draw[<->] (#1, 0) -- (#3, 0); \draw[<->] (0, #2) -- (0, #4);}
 
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+\newcommand{\abisect}[6][] % Source: https://tex.stackexchange.com/questions/233246/create-angle-bisectors-in-tikz
+{
+	\path[#1] let
+	\p1 = ($(#3)!1cm!(#2)$),
+	\p2 = ($(#3)!1cm!(#4)$),
+	\p3 = ($(\p1) + (\p2) - (#3)$)
+	in
+	($(#3)!#6!(\p3)$) -- ($(\p3)!#5!(#3)$) ;
+}
 
 % COLORFUL BOXES
 \newsavebox{\labox}
