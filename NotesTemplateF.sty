@@ -11,7 +11,7 @@
   [2023/16/07 v3.0 LaTeX package for Note taking in any Subject.]
 
 % PACKAGES
-\RequirePackage[dvipsnames]{xcolor}
+%\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
@@ -30,7 +30,7 @@
 \RequirePackage{enumitem}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[inline]{asymptote}
-\RequirePackage[a4paper, margin=1in]{geometry}
+%\RequirePackage[a4paper, margin=1in]{geometry}
 \RequirePackage{tcolorbox}
 \RequirePackage[sfdefault]{biolinum}
 %\RequirePackage[sfdefault]{FiraSans}
@@ -43,7 +43,7 @@
 % V2.2 Updates
 \RequirePackage{textgreek}
 \RequirePackage{xspace}
-\RequirePackage{quiver}
+%\RequirePackage{quiver}
 \RequirePackage{bbm}
 \RequirePackage[all]{xy}
 \RequirePackage{graphicx} % Required for inserting images
@@ -79,6 +79,9 @@
 \newcommand{\cross}{\times}
 
 \definecolor{dr}{RGB}{175, 0, 0}
+\definecolor{Aquamarine}{HTML}{00B5BE}
+\definecolor{NiceBlue}{HTML}{00FFFF}
+
 \newcommand{\imp}[1]{\textcolor{dr}{#1}}
 
 \newcommand{\myeq}[1]{\stackrel{\mathclap{\normalfont\mbox{\tiny{$#1$}}}}{=}} % For projective geometry
@@ -102,7 +105,6 @@
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 % COLORFUL BOXES (L means legacy)
-\definecolor{NiceBlue}{HTML}{00FFFF}
 
 \newtcolorbox{problem}[1][]{
    enhanced, 
@@ -119,6 +121,15 @@
    borderline north = {0.7pt}{0pt}{NiceBlue},
    borderline south = {0.7pt}{0pt}{NiceBlue},
    interior style = {top color=Aquamarine!7, bottom color=Aquamarine!7},
+   #1
+}
+
+\newtcolorbox{skill}[1][]{
+   enhanced, 
+   frame hidden, 
+   borderline north = {1.6pt}{0pt}{red},
+   borderline south = {1.6pt}{0pt}{red},
+   interior style = {top color=red!15, bottom color=red!10},
    #1
 }
 
